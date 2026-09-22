@@ -1,0 +1,1 @@
+This game is about playing air hockey. I've always liked air hockey since i was in elementary school since it is simple and fun. This game would train your reflex and motoric skills depending on the AI difficulty you are playing against
