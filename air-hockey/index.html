@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Cyber Air Hockey Championship</title>
+    <meta name="description" content="Experience seamless arcade air hockey with glowing cyberpunk visuals, predictive AI, 2-player local multiplayer, tournament ladder, and challenge modes.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Top App Navigation Header -->
+        <header class="app-header">
+            <div class="brand-title">NEON AIR HOCKEY <span>CHAMPIONSHIP</span></div>
+            <div class="header-controls">
+                <button id="btn-toggle-sound" class="btn btn-icon">Sound: ON</button>
+                <button id="btn-toggle-music" class="btn btn-icon">Music: ON</button>
+            </div>
+        </header>
+
+        <!-- 1. Main Menu Screen -->
+        <section id="main-menu-screen" class="screen active">
+            <div class="hero-banner">
+                <h1>CYBER AIR HOCKEY</h1>
+                <p>High-Speed Neon Physics & Arcade Action</p>
+            </div>
+
+            <!-- Quick Match Hero Card -->
+            <div class="quick-play-panel">
+                <div class="quick-difficulty-selector">
+                    <span class="difficulty-tag">AI DIFFICULTY:</span>
+                    <div class="menu-diff-pills" id="menu-diff-pills">
+                        <button class="diff-pill" data-diff="easy">CASUAL</button>
+                        <button class="diff-pill active" data-diff="medium">PRO</button>
+                        <button class="diff-pill" data-diff="hard">MASTER</button>
+                        <button class="diff-pill" data-diff="insane">CYBER GOD</button>
+                    </div>
+                </div>
+                <button id="btn-quick-match" class="btn btn-primary btn-hero-quick">
+                    <span class="btn-icon-flash">⚡</span>
+                    <span class="btn-text-main">QUICK MATCH (PLAY NOW)</span>
+                </button>
+            </div>
+
+            <div class="menu-options-grid">
+                <button id="btn-pvp-match" class="btn btn-secondary">👥 2-PLAYER LOCAL</button>
+                <button id="btn-tournament" class="btn btn-gold">🏆 TOURNAMENT</button>
+                <button id="btn-challenges" class="btn btn-primary">🎯 TRICKSHOTS</button>
+                <button id="btn-custom-match" class="btn btn-settings">⚙️ CUSTOM MATCH</button>
+            </div>
+
+            <button id="btn-customization" class="btn" style="margin-top: 6px; width: 320px;">🎨 SKINS & ARENAS LOCKER</button>
+        </section>
+
+        <!-- 2. Quick Match Setup Screen -->
+        <section id="quickmatch-screen" class="screen">
+            <div class="subscreen-content">
+                <div class="subscreen-header">
+                    <h2 class="subscreen-title">CUSTOM MATCH SETUP</h2>
+                    <button class="btn btn-back-menu">BACK</button>
+                </div>
+                <div class="settings-group">
+                    <div class="settings-label">SELECT AI DIFFICULTY</div>
+                    <div class="radio-pills">
+                        <label><input type="radio" name="diff-option" value="easy"><span>CASUAL (EASY)</span></label>
+                        <label><input type="radio" name="diff-option" value="medium" checked><span>PRO (MEDIUM)</span></label>
+                        <label><input type="radio" name="diff-option" value="hard"><span>MASTER (HARD)</span></label>
+                        <label><input type="radio" name="diff-option" value="insane"><span>CYBER GOD</span></label>
+                    </div>
+                </div>
+                <div class="settings-group">
+                    <div class="settings-label">TARGET WINNING SCORE</div>
+                    <div class="radio-pills">
+                        <label><input type="radio" name="score-option" value="5"><span>FIRST TO 5</span></label>
+                        <label><input type="radio" name="score-option" value="7" checked><span>FIRST TO 7</span></label>
+                        <label><input type="radio" name="score-option" value="10"><span>FIRST TO 10</span></label>
+                    </div>
+                </div>
+                <button id="btn-start-quickmatch" class="btn btn-primary" style="margin-top: 20px; align-self: flex-start; width: 260px;">START CUSTOM MATCH</button>
+            </div>
+        </section>
+
+        <!-- 3. Tournament Screen -->
+        <section id="tournament-screen" class="screen">
+            <div class="subscreen-content">
+                <div class="subscreen-header">
+                    <h2 class="subscreen-title">ARCADE TOURNAMENT LADDER</h2>
+                    <button class="btn btn-back-menu">BACK</button>
+                </div>
+                <div id="tournament-stages-container" class="stages-list">
+                    <!-- Dynamically generated stage cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Trickshots & Challenges Screen -->
+        <section id="challenges-screen" class="screen">
+            <div class="subscreen-content">
+                <div class="subscreen-header">
+                    <h2 class="subscreen-title">TRICKSHOT & TARGET CHALLENGES</h2>
+                    <button class="btn btn-back-menu">BACK</button>
+                </div>
+                <div id="challenges-container" class="challenges-grid">
+                    <!-- Dynamically generated challenge cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Customization Locker Screen -->
+        <section id="customization-screen" class="screen">
+            <div class="subscreen-content">
+                <div class="subscreen-header">
+                    <h2 class="subscreen-title">SKINS & ARENA LOCKER</h2>
+                    <button class="btn btn-back-menu">BACK</button>
+                </div>
+
+                <div class="locker-section-title">CHOOSE MALLET STRIKER SKIN</div>
+                <div class="cards-carousel">
+                    <div class="skin-card selected" data-skin="cyber-cyan">
+                        <div class="skin-preview-circle" style="background: radial-gradient(#00f0ff, #004488); color: #00f0ff;"></div>
+                        <div class="skin-name">CYBER CYAN</div>
+                    </div>
+                    <div class="skin-card" data-skin="crimson-fury">
+                        <div class="skin-preview-circle" style="background: radial-gradient(#ff0055, #880022); color: #ff0055;"></div>
+                        <div class="skin-name">CRIMSON FURY</div>
+                    </div>
+                    <div class="skin-card" data-skin="cyber-gold">
+                        <div class="skin-preview-circle" style="background: radial-gradient(#ffe600, #887700); color: #ffe600;"></div>
+                        <div class="skin-name">CHAMPION GOLD</div>
+                    </div>
+                    <div class="skin-card" data-skin="void-violet">
+                        <div class="skin-preview-circle" style="background: radial-gradient(#b800ff, #550088); color: #b800ff;"></div>
+                        <div class="skin-name">VOID VIOLET</div>
+                    </div>
+                    <div class="skin-card" data-skin="emerald-matrix">
+                        <div class="skin-preview-circle" style="background: radial-gradient(#00ff66, #00772e); color: #00ff66;"></div>
+                        <div class="skin-name">EMERALD MATRIX</div>
+                    </div>
+                    <div class="skin-card" data-skin="laser-flame">
+                        <div class="skin-preview-circle" style="background: radial-gradient(#ff6600, #993300); color: #ff6600;"></div>
+                        <div class="skin-name">LASER FLAME</div>
+                    </div>
+                </div>
+
+                <div class="locker-section-title">CHOOSE ARENA THEME</div>
+                <div class="cards-carousel">
+                    <div class="arena-card selected" data-arena="cyberpunk">
+                        <div class="arena-name">CYBERPUNK NEON</div>
+                    </div>
+                    <div class="arena-card" data-arena="synthwave">
+                        <div class="arena-name">SYNTHWAVE SUNSET</div>
+                    </div>
+                    <div class="arena-card" data-arena="tokyo-neon">
+                        <div class="arena-name">TOKYO EMERALD</div>
+                    </div>
+                    <div class="arena-card" data-arena="lava-forge">
+                        <div class="arena-name">LAVA FORGE</div>
+                    </div>
+                    <div class="arena-card" data-arena="deep-cosmos">
+                        <div class="arena-name">DEEP COSMOS</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Game Playing Screen -->
+        <section id="game-screen" class="screen">
+            <div class="game-hud">
+                <div class="hud-player">
+                    <span id="hud-p1-name" class="hud-name">PLAYER 1</span>
+                    <span id="hud-p1-score" class="hud-score">0</span>
+                </div>
+                <span class="hud-vs">VS</span>
+                <div class="hud-player">
+                    <span id="hud-p2-name" class="hud-name">AI OPPONENT</span>
+                    <span id="hud-p2-score" class="hud-score">0</span>
+                </div>
+                <button id="btn-hud-pause" class="btn-pause-circle" title="Pause Game (P / ESC)">⏸</button>
+            </div>
+
+            <!-- Countdown Overlay -->
+            <div id="match-countdown" class="match-countdown">
+                <div id="countdown-text" class="countdown-text">READY</div>
+            </div>
+
+            <div id="goal-banner">GOAL!</div>
+
+            <div id="canvas-wrapper">
+                <canvas id="gameCanvas" width="980" height="580"></canvas>
+            </div>
+        </section>
+
+        <!-- Pause Modal Overlay -->
+        <div id="pause-modal" class="modal-overlay">
+            <div class="modal-card">
+                <h2 class="modal-title">MATCH PAUSED</h2>
+                <div style="display:flex; flex-direction:column; gap:12px; width:100%;">
+                    <button id="btn-resume" class="btn btn-primary">RESUME MATCH</button>
+                    <button id="btn-restart" class="btn btn-secondary">RESTART MATCH</button>
+                    <button class="btn btn-back-menu">MAIN MENU</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Victory / Game Over Modal Overlay -->
+        <div id="victory-modal" class="modal-overlay">
+            <div class="modal-card">
+                <h2 id="victory-title" class="modal-title">VICTORY!</h2>
+                <p id="victory-subtitle" class="modal-subtitle">PLAYER 1 WINS THE MATCH!</p>
+                <div class="modal-scores">
+                    <span id="victory-p1-score" style="color:var(--cyan-glow);">P1: 7</span>
+                    <span id="victory-p2-score" style="color:var(--pink-glow);">P2: 4</span>
+                </div>
+                <div style="display:flex; gap:16px; width:100%;">
+                    <button id="btn-victory-restart" class="btn btn-primary" style="flex:1;">PLAY AGAIN</button>
+                    <button class="btn btn-back-menu" style="flex:1;">MAIN MENU</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions Bar Footer -->
+        <footer class="instructions-bar">
+            <span><strong>Controls:</strong> Mouse / Touch Screen (Direct Striker Control)</span>
+            <span><strong>2-Player PvP:</strong> P1 [W/A/S/D] & P2 [Arrow Keys] or Split Touch</span>
+            <span><strong>Pause:</strong> [P] or [ESC]</span>
+        </footer>
+    </div>
+
+    <!-- Main Game Script -->
+    <script src="js/game.js"></script>
+</body>
+</html>
